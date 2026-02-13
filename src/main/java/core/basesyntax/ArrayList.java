@@ -38,7 +38,7 @@ public class ArrayList<T> implements List<T> {
     public void addAll(List<T> list) {
         checkNullException(list);
         if (objectList.length < size + list.size()) {
-            grow(objectList.length + list.size());
+            grow(size + list.size());
         }
         for (int i = 0; i < list.size(); i++) {
             objectList[size] = list.get(i);
@@ -52,7 +52,7 @@ public class ArrayList<T> implements List<T> {
         return (T) objectList[index];
     }
 
-    public int get(T element) {
+    public int indexOf(T element) {
         for (int i = 0; i < size; i++) {
             if (element == objectList[i] || element != null && element.equals(objectList[i])) {
                 return i;
@@ -77,7 +77,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T remove(T element) {
-        int removeIndex = get(element);
+        int removeIndex = indexOf(element);
         checkIndexValueForRemove(removeIndex);
         return remove(removeIndex);
     }
